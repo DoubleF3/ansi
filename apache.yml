@@ -1,0 +1,23 @@
+---
+
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository index
+    apt:
+      update_cache: yes
+
+  - name: install apache2 package
+    apt:
+      name: apache2
+      state: latest
+
+  - name: copy 4 files
+    copy:
+    src: file/
+    dest: /home/ubuntu
+    owner: root
+    group: root
+    mode: 0644
